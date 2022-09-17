@@ -1,0 +1,106 @@
+@use '../util/' as u;
+
+.product-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: min(100% - 40px, 585px);
+  height: 440px;
+  margin: auto;
+  background-color: white;
+  border-radius: var(--rounded);
+  
+  &__picture {
+    width: 50%;
+    height: 100%;
+    background-image: url("../images/image-product-desktop.jpg");
+    background-size: cover;
+    border-radius: var(--rounded) 0 0 var(--rounded);
+
+    @include u.breakpoint() {
+      background-image: url("../images/image-product-mobile.jpg");
+      border-radius: var(--rounded) var(--rounded) 0 0;
+      width: 100%;
+      height: 70%;
+    }
+  }
+
+  &__details {
+    width: 50%;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    @include u.breakpoint() {
+      width: 100%;
+    }
+
+    &__category {
+      text-transform: uppercase;
+      letter-spacing: .35em;
+      font-size: .75em;
+    }
+
+    &__name {
+      color: black;
+      font-family: u.$heading-font;
+      margin-bottom: -1.75em;
+    }
+
+    &__description {
+      font-size: 14px;
+      line-height: 1.6;
+
+      span {
+        text-transform: uppercase;
+      }
+    }
+
+    &__price {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      &__current {
+        font-size: 1.9rem;
+        font-family: u.$heading-font;
+        color: var(--green);
+        margin-right: -1.2em;
+      }
+
+      &__discounted {
+        margin-inline: auto;
+        text-decoration: line-through;
+        font-size: 0.85em;
+      }
+    }
+
+    & button {
+      background-color: var(--green);
+      border: none;
+      border-radius: var(--rounded);
+      padding: 0.8rem;
+      color: white;
+      font-family: u.$paragraph-font;
+      font-weight: 700;
+      align-items: center;
+      cursor: pointer;
+      transition: box-shadow 0.3s;
+
+      &:hover {
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      &:active {
+        background-color: var(--green-hover);
+      }
+    }
+  }
+
+  @include u.breakpoint() {
+    flex-direction: column;
+    height: 600px;
+  }
+}
